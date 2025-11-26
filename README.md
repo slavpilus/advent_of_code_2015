@@ -1,21 +1,23 @@
 # AdventOfCode2015
 
-**TODO: Add description**
+My solutions to Advent of Code 2015
 
-## Installation
+## Run specific puzzle e.g. for day 1 part 1
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `advent_of_code_2015` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [
-    {:advent_of_code_2015, "~> 0.1.0"}
-  ]
-end
+```bash
+mix day 1 1
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/advent_of_code_2015>.
+this will automatically import input from priv/inputs/day01.txt
 
+## Run all tests
+
+```
+mix test
+```
+
+## Run a single test e.g
+
+```bash
+mix test test/day01_test.exs
+```

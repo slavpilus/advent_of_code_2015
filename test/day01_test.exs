@@ -12,4 +12,9 @@ defmodule AOC.Day01Test do
     assert AOC.Day01.part1(")))") == -3
     assert AOC.Day01.part1(")())())") == -3
   end
+
+  test "day01part2" do
+    assert AOC.Day01.part2(")") == 1
+    assert AOC.Day01.part2("()())") == 5
+  end
 end
