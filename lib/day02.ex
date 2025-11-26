@@ -17,6 +17,18 @@ defmodule AOC.Day02 do
   end
 
   def part2(input) do
-    IO.puts(input)
+    input
+    |> String.split("\n", trim: true)
+    |> Enum.reduce(0, fn line, total ->
+      [l, h, w] =
+        line
+        |> String.split("x")
+        |> Enum.map(fn x -> String.to_integer(x) end)
+
+      [s1, s2] = List.delete([l, h, w], Enum.max([l, h, w]))
+
+      line_total = s1 * 2 + s2 * 2 + h * l * w
+      total + line_total
+    end)
   end
 end

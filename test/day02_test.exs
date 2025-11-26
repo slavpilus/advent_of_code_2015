@@ -7,6 +7,7 @@ defmodule AOC.Day02Test do
   end
 
   test "part2" do
-    assert AOC.Day02.part2("1x1x10") == :ok
+    assert AOC.Day02.part2("2x3x4") == 34
+    assert AOC.Day02.part2("1x1x10") == 14
   end
 end
