@@ -60,7 +60,59 @@ defmodule AOC.Day06 do
     end
   end
 
+  def part2(input, grid) do
+    input
+    |> String.split("\n", trim: true)
+    |> Enum.map(fn line -> extract(line) end)
+    |> Enum.reduce(grid, fn instruction, grid ->
+      process_instruction_part2(instruction, grid)
+    end)
+    |> Enum.reduce(0, fn row, row_count ->
+      rc =
+        row
+        |> Enum.sum()
+
+      row_count + rc
+    end)
+  end
+
   def part2(input) do
-    IO.puts(input)
+    grid =
+      for _row <- 0..999 do
+        for _column <- 0..999 do
+          0
+        end
+      end
+
+    part2(input, grid)
+  end
+
+  defp process_instruction_part2({inst, {x1, y1}, {x2, y2}}, grid) do
+    grid
+    |> Enum.with_index()
+    |> Enum.map(fn {row, ridx} ->
+      row
+      |> Enum.with_index()
+      |> Enum.map(fn {cell, cinx} ->
+        if cinx in x1..x2 and ridx in y1..y2 do
+          case inst do
+            "turn on" ->
+              cell + 1
+
+            "turn off" ->
+              if cell - 1 < 0 do
+                0
+              else
+                cell - 1
+              end
+
+            "toggle" ->
+              cell + 2
+          end
+        else
+          cell
+        end
+      end)
+    end)
   end
 end
